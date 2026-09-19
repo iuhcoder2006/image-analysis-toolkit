@@ -62,16 +62,3 @@ class ImageDisplay(QWidget):
         )
         self.image_label.setPixmap(scaled)
 
-
-class ColorSwatch(QWidget):
-    def __init__(self, color: Qt.GlobalColor, parent: QWidget | None = None) -> None:
-        super().__init__(parent)
-        self.color = color
-        self.setFixedSize(16, 16)
-
-    def paintEvent(self, event) -> None:  # noqa: N802
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        painter.setBrush(self.color)
-        painter.setPen(Qt.PenStyle.NoPen)
-        painter.drawRoundedRect(self.rect(), 4, 4)
